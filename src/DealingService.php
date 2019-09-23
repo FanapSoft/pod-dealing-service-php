@@ -31,14 +31,23 @@ class DealingService extends BaseService
         $paramKey = self::$dealingApi[$apiName]['method'] == 'GET' ? 'query' : 'form_params';
         $relativeUri = self::$dealingApi[$apiName]['subUri'];
 
-        // set headers
-        $header = [
-            '_token_issuer_'    => isset($params['_token_issuer_']) ? $params['_token_issuer_'] : 1,
-            '_token_'           => isset($params['_token_']) ? $params['_token_'] : '',
-        ];
-        // unset header value from params
-        unset($params['_token_issuer_']);
-        unset($params['_token_']);
+        // set tokenIssuer in header
+        if (isset($params['tokenIssuer'])) {
+            $header['_token_issuer_'] = $params['tokenIssuer'];
+            unset($params['tokenIssuer']);
+        }
+        else{
+            $header['_token_issuer_'] = 1;
+        }
+
+        // set token in header
+        if (isset($params['apiToken'])) {
+            $header['_token_'] = $params['apiToken'];
+            unset($params['apiToken']);
+        }
+        else{
+            $header['_token_'] = '';
+        }
 
         $option = [
             'headers' => $header,
@@ -46,6 +55,26 @@ class DealingService extends BaseService
         ];
 
         self::validateOption($apiName, $option, $paramKey);
+
+        // prepare params to send
+        $withBracketParams = [];
+        if (isset($params['guildCode'])) {
+            $withBracketParams['guildCode'] = $params['guildCode'];
+            unset($params['guildCode']);
+        }
+
+        if(isset($params['tags']) && is_array($params['tags'])){
+            $params['tags'] =  implode(',', $params['tags']);
+        }
+
+        if(isset($params['tagTrees']) && is_array($params['tagTrees'])){
+            $params['tagTrees'] =  implode(',', $params['tagTrees']);
+        }
+
+        $option['withBracketParams'] = $withBracketParams;
+        $option['withoutBracketParams'] = $params;
+        //  unset `query` key because query string will be build in ApiRequestHandler and will be added to uri so dont need send again in query params
+        unset($option['query']);
 
         return  ApiRequestHandler::Request(
             self::$config[self::$serverType][self::$dealingApi[$apiName]['baseUri']],
@@ -63,14 +92,23 @@ class DealingService extends BaseService
         $paramKey = self::$dealingApi[$apiName]['method'] == 'GET' ? 'query' : 'form_params';
         $relativeUri = self::$dealingApi[$apiName]['subUri'];
 
-        // set headers
-        $header = [
-            '_token_issuer_'    => isset($params['_token_issuer_']) ? $params['_token_issuer_'] : 1,
-            '_token_'           => isset($params['_token_']) ? $params['_token_'] : '',
-        ];
-        // unset header value from params
-        unset($params['_token_issuer_']);
-        unset($params['_token_']);
+        // set tokenIssuer in header
+        if (isset($params['tokenIssuer'])) {
+            $header['_token_issuer_'] = $params['tokenIssuer'];
+            unset($params['tokenIssuer']);
+        }
+        else{
+            $header['_token_issuer_'] = 1;
+        }
+
+        // set token in header
+        if (isset($params['apiToken'])) {
+            $header['_token_'] = $params['apiToken'];
+            unset($params['apiToken']);
+        }
+        else{
+            $header['_token_'] = '';
+        }
 
         $option = [
             'headers' => $header,
@@ -78,6 +116,17 @@ class DealingService extends BaseService
         ];
 
         self::validateOption($apiName, $option, $paramKey);
+
+        // prepare params to send
+        $withBracketParams = [];
+        if (isset($params['guildCode'])) {
+            $withBracketParams['guildCode'] = $params['guildCode'];
+            unset($params['guildCode']);
+        }
+        $option['withBracketParams'] = $withBracketParams;
+        $option['withoutBracketParams'] = $params;
+        //  unset `query` key because query string will be build in ApiRequestHandler and will be added to uri so dont need send again in query params
+        unset($option['query']);
 
         return  ApiRequestHandler::Request(
             self::$config[self::$serverType][self::$dealingApi[$apiName]['baseUri']],
@@ -95,14 +144,23 @@ class DealingService extends BaseService
         $paramKey = self::$dealingApi[$apiName]['method'] == 'GET' ? 'query' : 'form_params';
         $relativeUri = self::$dealingApi[$apiName]['subUri'];
 
-        // set headers
-        $header = [
-            '_token_issuer_'    => isset($params['_token_issuer_']) ? $params['_token_issuer_'] : 1,
-            '_token_'           => isset($params['_token_']) ? $params['_token_'] : '',
-        ];
-        // unset header value from params
-        unset($params['_token_issuer_']);
-        unset($params['_token_']);
+        // set tokenIssuer in header
+        if (isset($params['tokenIssuer'])) {
+            $header['_token_issuer_'] = $params['tokenIssuer'];
+            unset($params['tokenIssuer']);
+        }
+        else{
+            $header['_token_issuer_'] = 1;
+        }
+
+        // set token in header
+        if (isset($params['apiToken'])) {
+            $header['_token_'] = $params['apiToken'];
+            unset($params['apiToken']);
+        }
+        else{
+            $header['_token_'] = '';
+        }
 
         $option = [
             'headers' => $header,
@@ -110,6 +168,26 @@ class DealingService extends BaseService
         ];
 
         self::validateOption($apiName, $option, $paramKey);
+
+        // prepare params to send
+        $withBracketParams = [];
+        if (isset($params['guildCode'])) {
+            $withBracketParams['guildCode'] = $params['guildCode'];
+            unset($params['guildCode']);
+        }
+
+        if(isset($params['tags']) && is_array($params['tags'])){
+            $params['tags'] =  implode(',', $params['tags']);
+        }
+
+        if(isset($params['tagTrees']) && is_array($params['tagTrees'])){
+            $params['tagTrees'] =  implode(',', $params['tagTrees']);
+        }
+
+        $option['withBracketParams'] = $withBracketParams;
+        $option['withoutBracketParams'] = $params;
+        //  unset `query` key because query string will be build in ApiRequestHandler and will be added to uri so dont need send again in query params
+        unset($option['query']);
 
         return  ApiRequestHandler::Request(
             self::$config[self::$serverType][self::$dealingApi[$apiName]['baseUri']],
@@ -121,47 +199,28 @@ class DealingService extends BaseService
         );
     }
 
-//    public function subBusinessList($params) {
-//        $apiName = 'subBusinessList';
-//        array_walk_recursive($params, 'self::prepareData');
-//        $paramKey = self::$dealingApi[$apiName]['method'] == 'GET' ? 'query' : 'form_params';
-//
-//        $option = [
-//            'headers' => $header,
-//            $paramKey => $params,
-//        ];
-//
-//        $validateResult = self::validateOption($apiName, $option, $paramKey);
-//        if ($validateResult['validate']) {
-//            return  ApiRequestHandler::Request(
-//                self::$config[self::$serverType][self::$dealingApi[$apiName]['baseUri']],
-//                self::$dealingApi[$apiName]['method'],
-//                self::$dealingApi[$apiName]['subUri'],
-//                $option,
-//                false
-//            );
-//
-//        }
-//        else {
-//            throw new Exception($validateResult['errorMessage'], self::VALIDATION_ERROR_CODE);
-//        }
-//
-//    }
-
     public function getApiTokenForCreatedBusiness($params) {
         $apiName = 'getApiTokenForCreatedBusiness';
         array_walk_recursive($params, 'self::prepareData');
         $paramKey = self::$dealingApi[$apiName]['method'] == 'GET' ? 'query' : 'form_params';
 
-        // set headers
-        $header = [
-            '_token_issuer_'    => isset($params['_token_issuer_']) ? $params['_token_issuer_'] : 1,
-            '_token_'           => isset($params['_token_']) ? $params['_token_'] : '',
-        ];
-        // unset header value from params
-        unset($params['_token_issuer_']);
-        unset($params['_token_']);
+        // set tokenIssuer in header
+        if (isset($params['tokenIssuer'])) {
+            $header['_token_issuer_'] = $params['tokenIssuer'];
+            unset($params['tokenIssuer']);
+        }
+        else{
+            $header['_token_issuer_'] = 1;
+        }
 
+        // set token in header
+        if (isset($params['apiToken'])) {
+            $header['_token_'] = $params['apiToken'];
+            unset($params['apiToken']);
+        }
+        else{
+            $header['_token_'] = '';
+        }
         $option = [
             'headers' => $header,
             $paramKey => $params,
@@ -182,14 +241,23 @@ class DealingService extends BaseService
         array_walk_recursive($params, 'self::prepareData');
         $paramKey = self::$dealingApi[$apiName]['method'] == 'GET' ? 'query' : 'form_params';
 
-        // set headers
-        $header = [
-            '_token_issuer_'    => isset($params['_token_issuer_']) ? $params['_token_issuer_'] : 1,
-            '_token_'           => isset($params['_token_']) ? $params['_token_'] : '',
-        ];
-        // unset header value from params
-        unset($params['_token_issuer_']);
-        unset($params['_token_']);
+        // set tokenIssuer in header
+        if (isset($params['tokenIssuer'])) {
+            $header['_token_issuer_'] = $params['tokenIssuer'];
+            unset($params['tokenIssuer']);
+        }
+        else{
+            $header['_token_issuer_'] = 1;
+        }
+
+        // set token in header
+        if (isset($params['token'])) {
+            $header['_token_'] = $params['token'];
+            unset($params['token']);
+        }
+        else{
+            $header['_token_'] = '';
+        }
 
         $option = [
             'headers' => $header,
@@ -210,14 +278,23 @@ class DealingService extends BaseService
         array_walk_recursive($params, 'self::prepareData');
         $paramKey = self::$dealingApi[$apiName]['method'] == 'GET' ? 'query' : 'form_params';
 
-        // set headers
-        $header = [
-            '_token_issuer_'    => isset($params['_token_issuer_']) ? $params['_token_issuer_'] : 1,
-            '_token_'           => isset($params['_token_']) ? $params['_token_'] : '',
-        ];
-        // unset header value from params
-        unset($params['_token_issuer_']);
-        unset($params['_token_']);
+        // set tokenIssuer in header
+        if (isset($params['tokenIssuer'])) {
+            $header['_token_issuer_'] = $params['tokenIssuer'];
+            unset($params['tokenIssuer']);
+        }
+        else{
+            $header['_token_issuer_'] = 1;
+        }
+
+        // set token in header
+        if (isset($params['token'])) {
+            $header['_token_'] = $params['token'];
+            unset($params['token']);
+        }
+        else{
+            $header['_token_'] = '';
+        }
 
         $option = [
             'headers' => $header,
@@ -237,14 +314,24 @@ class DealingService extends BaseService
         $apiName = 'businessFavorite';
         array_walk_recursive($params, 'self::prepareData');
         $paramKey = self::$dealingApi[$apiName]['method'] == 'GET' ? 'query' : 'form_params';
-        // set headers
-        $header = [
-            '_token_issuer_'    => isset($params['_token_issuer_']) ? $params['_token_issuer_'] : 1,
-            '_token_'           => isset($params['_token_']) ? $params['_token_'] : '',
-        ];
-        // unset header value from params
-        unset($params['_token_issuer_']);
-        unset($params['_token_']);
+
+        // set tokenIssuer in header
+        if (isset($params['tokenIssuer'])) {
+            $header['_token_issuer_'] = $params['tokenIssuer'];
+            unset($params['tokenIssuer']);
+        }
+        else{
+            $header['_token_issuer_'] = 1;
+        }
+
+        // set token in header
+        if (isset($params['token'])) {
+            $header['_token_'] = $params['token'];
+            unset($params['token']);
+        }
+        else{
+            $header['_token_'] = '';
+        }
 
         $option = [
             'headers' => $header,
@@ -265,14 +352,24 @@ class DealingService extends BaseService
         array_walk_recursive($params, 'self::prepareData');
         $paramKey = self::$dealingApi[$apiName]['method'] == 'GET' ? 'query' : 'form_params';
         $relativeUri = self::$dealingApi[$apiName]['subUri'];
-        // set headers
-        $header = [
-            '_token_issuer_'    => isset($params['_token_issuer_']) ? $params['_token_issuer_'] : 1,
-            '_token_'           => isset($params['_token_']) ? $params['_token_'] : '',
-        ];
-        // unset header value from params
-        unset($params['_token_issuer_']);
-        unset($params['_token_']);
+
+        // set tokenIssuer in header
+        if (isset($params['tokenIssuer'])) {
+            $header['_token_issuer_'] = $params['tokenIssuer'];
+            unset($params['tokenIssuer']);
+        }
+        else{
+            $header['_token_issuer_'] = 1;
+        }
+
+        // set token in header
+        if (isset($params['token'])) {
+            $header['_token_'] = $params['token'];
+            unset($params['token']);
+        }
+        else{
+            $header['_token_'] = '';
+        }
 
         $option = [
             'headers' => $header,
@@ -280,6 +377,17 @@ class DealingService extends BaseService
         ];
 
         self::validateOption($apiName, $option, $paramKey);
+
+        // prepare params to send
+        $withBracketParams = [];
+        if (isset($params['id'])) {
+            $withBracketParams['id'] = $params['id'];
+            unset($params['id']);
+        }
+        $option['withBracketParams'] = $withBracketParams;
+        $option['withoutBracketParams'] = $params;
+        //  unset `query` key because query string will be build in ApiRequestHandler and will be added to uri so dont need send again in query params
+        unset($option['query']);
 
         return  ApiRequestHandler::Request(
             self::$config[self::$serverType][self::$dealingApi[$apiName]['baseUri']],
@@ -296,14 +404,23 @@ class DealingService extends BaseService
         array_walk_recursive($params, 'self::prepareData');
         $paramKey = self::$dealingApi[$apiName]['method'] == 'GET' ? 'query' : 'form_params';
 
-        // set headers
-        $header = [
-            '_token_issuer_'    => isset($params['_token_issuer_']) ? $params['_token_issuer_'] : 1,
-            '_token_'           => isset($params['_token_']) ? $params['_token_'] : '',
-        ];
-        // unset header value from params
-        unset($params['_token_issuer_']);
-        unset($params['_token_']);
+        // set tokenIssuer in header
+        if (isset($params['tokenIssuer'])) {
+            $header['_token_issuer_'] = $params['tokenIssuer'];
+            unset($params['tokenIssuer']);
+        }
+        else{
+            $header['_token_issuer_'] = 1;
+        }
+
+        // set token in header
+        if (isset($params['token'])) {
+            $header['_token_'] = $params['token'];
+            unset($params['token']);
+        }
+        else{
+            $header['_token_'] = '';
+        }
 
         $option = [
             'headers' => $header,
@@ -324,15 +441,23 @@ class DealingService extends BaseService
         array_walk_recursive($params, 'self::prepareData');
         $paramKey = self::$dealingApi[$apiName]['method'] == 'GET' ? 'query' : 'form_params';
 
-        // set headers
-        $header = [
-            '_token_issuer_'    => isset($params['_token_issuer_']) ? $params['_token_issuer_'] : 1,
-            '_token_'           => isset($params['_token_']) ? $params['_token_'] : '',
-        ];
-        // unset header value from params
-        unset($params['_token_issuer_']);
-        unset($params['_token_']);
+        // set tokenIssuer in header
+        if (isset($params['tokenIssuer'])) {
+            $header['_token_issuer_'] = $params['tokenIssuer'];
+            unset($params['tokenIssuer']);
+        }
+        else{
+            $header['_token_issuer_'] = 1;
+        }
 
+        // set token in header
+        if (isset($params['apiToken'])) {
+            $header['_token_'] = $params['apiToken'];
+            unset($params['apiToken']);
+        }
+        else{
+            $header['_token_'] = '';
+        }
         $option = [
             'headers' => $header,
             $paramKey => $params,
