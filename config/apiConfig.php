@@ -1,72 +1,137 @@
 <?php
 return
     [
+        'addDealer' => [
+            'baseUri' => 'PLATFORM-ADDRESS',
+            'subUri' => 'nzh/doServiceCall',
+            'method' => 'POST'
+        ],
+
+        'dealerList' => [
+            'baseUri' => 'PLATFORM-ADDRESS',
+            'subUri' => 'nzh/doServiceCall',
+            'method' => 'POST'
+        ],
+
+        'enableDealer' => [
+            'baseUri' => 'PLATFORM-ADDRESS',
+            'subUri' => 'nzh/doServiceCall',
+            'method' => 'POST'
+        ],
+
+        'disableDealer' => [
+            'baseUri' => 'PLATFORM-ADDRESS',
+            'subUri' => 'nzh/doServiceCall',
+            'method' => 'POST'
+        ],
+
+        'businessDealingList' => [
+            'baseUri' => 'PLATFORM-ADDRESS',
+            'subUri' => 'nzh/doServiceCall',
+            'method' => 'POST'
+        ],
+
+        'addDealerProductPermission' => [
+            'baseUri' => 'PLATFORM-ADDRESS',
+            'subUri' => 'nzh/doServiceCall',
+            'method' => 'POST'
+        ],
+
+        'dealerProductPermissionList' => [
+            'baseUri' => 'PLATFORM-ADDRESS',
+            'subUri' => 'nzh/doServiceCall',
+            'method' => 'POST'
+        ],
+
+        'dealingProductPermissionList' => [
+            'baseUri' => 'PLATFORM-ADDRESS',
+            'subUri' => 'nzh/doServiceCall',
+            'method' => 'POST'
+        ],
+
+        'disableDealerProductPermission' => [
+            'baseUri' => 'PLATFORM-ADDRESS',
+            'subUri' => 'nzh/doServiceCall',
+            'method' => 'POST'
+        ],
+
+        'enableDealerProductPermission' => [
+            'baseUri' => 'PLATFORM-ADDRESS',
+            'subUri' => 'nzh/doServiceCall',
+            'method' => 'POST'
+        ],
+
         'addUserAndBusiness' => [
             'baseUri' => 'PLATFORM-ADDRESS',
-            'subUri' => 'nzh/biz/addUserAndBusiness',
+            'subUri' => 'nzh/doServiceCall',
             'method' => 'GET'
         ],
 
         'listUserCreatedBusiness' => [
             'baseUri' => 'PLATFORM-ADDRESS',
-            'subUri' => 'nzh/listUserCreatedBusiness',
+            'subUri' => 'nzh/doServiceCall',
             'method' => 'GET'
         ],
 
         'updateBusiness' => [
             'baseUri' => 'PLATFORM-ADDRESS',
-            'subUri' => 'nzh/biz/updateBusiness',
+            'subUri' => 'nzh/doServiceCall',
             'method' => 'GET'
         ],
 
         'subBusinessList' => [
             'baseUri' => 'PLATFORM-ADDRESS',
-            'subUri' => 'nzh/biz/subBusinessList',
+            'subUri' => 'nzh/doServiceCall',
             'method' => 'GET'
         ],
 
         'getApiTokenForCreatedBusiness' => [
             'baseUri' => 'PLATFORM-ADDRESS',
-            'subUri' => 'nzh/biz/getApiTokenForCreatedBusiness',
+            'subUri' => 'nzh/doServiceCall',
             'method' => 'GET'
         ],
 
         'rateBusiness' => [
             'baseUri' => 'PLATFORM-ADDRESS',
-            'subUri' => 'nzh/rateBusiness',
+            'subUri' => 'nzh/doServiceCall',
             'method' => 'GET'
         ],
 
         'commentBusiness' => [
             'baseUri' => 'PLATFORM-ADDRESS',
-            'subUri' => 'nzh/commentBusiness',
+            'subUri' => 'nzh/doServiceCall',
             'method' => 'GET'
         ],
 
         'businessFavorite' => [
             'baseUri' => 'PLATFORM-ADDRESS',
-            'subUri' => 'nzh/businessFavorite',
+            'subUri' => 'nzh/doServiceCall',
             'method' => 'GET'
         ],
 
         'userBusinessInfos' => [
             'baseUri' => 'PLATFORM-ADDRESS',
-            'subUri' => 'nzh/userBusinessInfos',
+            'subUri' => 'nzh/doServiceCall',
             'method' => 'GET'
         ],
 
         'commentBusinessList' => [
             'baseUri' => 'PLATFORM-ADDRESS',
-            'subUri' => 'nzh/commentBusinessList',
+            'subUri' => 'nzh/doServiceCall',
             'method' => 'GET'
         ],
 
         'confirmComment' => [
             'baseUri' => 'PLATFORM-ADDRESS',
-            'subUri' => 'nzh/biz/confirmComment',
+            'subUri' => 'nzh/doServiceCall',
             'method' => 'GET'
         ],
 
+        'unConfirmComment' => [
+            'baseUri' => 'PLATFORM-ADDRESS',
+            'subUri' => 'nzh/doServiceCall',
+            'method' => 'GET'
+        ],
     ];
 
 

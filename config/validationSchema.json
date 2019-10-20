@@ -1,4 +1,522 @@
 {
+    "addDealer": {
+        "header": {
+            "type": "object",
+            "properties": {
+                "_token_": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "_token_issuer_": {
+                    "type": "integer",
+                    "enum": [0, 1]
+                }
+            },
+            "required": [
+                "_token_",
+                "_token_issuer_"
+            ],
+            "additionalProperties": true
+        },
+        "form_params": {
+            "type": "object",
+            "properties": {
+                "dealerBizId": {
+                    "type": "integer",
+                    "title": "شناسه کسب و کار واسط"
+                },
+                "allProductAllow": {
+                    "type": "string",
+                    "title": "دسترسی به همه محصولات"
+                },
+                "scVoucherHash": {
+                    "type": "array",
+                    "title": "کد تخفیف برای فراخوانی سرویس کال",
+                    "description": "کد تخفیف برای فراخوانی سرویس کال",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "scApiKey": {
+                    "type": "string",
+                    "title": "توکن برای فراخوانی سرویس کال"
+                }
+            },
+            "required": ["dealerBizId"],
+            "additionalProperties": false
+        }
+    },
+
+    "dealerList": {
+        "header": {
+            "type": "object",
+            "properties": {
+                "_token_": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "_token_issuer_": {
+                    "type": "integer",
+                    "enum": [0, 1]
+                }
+            },
+            "required": [
+                "_token_",
+                "_token_issuer_"
+            ],
+            "additionalProperties": true
+        },
+        "form_params": {
+            "type": "object",
+            "properties": {
+                "dealerBizId": {
+                    "type": "integer",
+                    "title": "شناسه کسب و کار واسط"
+                },
+                "enable": {
+                    "type": "string",
+                    "title": "فعال بودن واسط"
+                },
+                "offset": {
+                    "type": "integer",
+                    "minimum" : 0
+                },
+                "size": {
+                    "type": "integer",
+                    "minimum" : 1,
+                    "title": "تعداد رکورد در هر صفحه"
+                },
+                "scVoucherHash": {
+                    "type": "array",
+                    "title": "کد تخفیف برای فراخوانی سرویس کال",
+                    "description": "کد تخفیف برای فراخوانی سرویس کال",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "scApiKey": {
+                    "type": "string",
+                    "title": "توکن برای فراخوانی سرویس کال"
+                }
+            },
+            "required": [],
+            "additionalProperties": false
+        }
+    },
+
+    "enableDealer": {
+        "header": {
+            "type": "object",
+            "properties": {
+                "_token_": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "_token_issuer_": {
+                    "type": "integer",
+                    "enum": [0, 1]
+                }
+            },
+            "required": [
+                "_token_",
+                "_token_issuer_"
+            ],
+            "additionalProperties": true
+        },
+        "form_params": {
+            "type": "object",
+            "properties": {
+                "dealerBizId": {
+                    "type": "integer",
+                    "title": "شناسه کسب و کار واسط"
+                },
+                "scVoucherHash": {
+                    "type": "array",
+                    "title": "کد تخفیف برای فراخوانی سرویس کال",
+                    "description": "کد تخفیف برای فراخوانی سرویس کال",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "scApiKey": {
+                    "type": "string",
+                    "title": "توکن برای فراخوانی سرویس کال"
+                }
+            },
+            "required": ["dealerBizId"],
+            "additionalProperties": false
+        }
+    },
+
+    "disableDealer": {
+        "header": {
+            "type": "object",
+            "properties": {
+                "_token_": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "_token_issuer_": {
+                    "type": "integer",
+                    "enum": [0, 1]
+                }
+            },
+            "required": [
+                "_token_",
+                "_token_issuer_"
+            ],
+            "additionalProperties": true
+        },
+        "form_params": {
+            "type": "object",
+            "properties": {
+                "dealerBizId": {
+                    "type": "integer",
+                    "title": "شناسه کسب و کار واسط"
+                },
+                "scVoucherHash": {
+                    "type": "array",
+                    "title": "کد تخفیف برای فراخوانی سرویس کال",
+                    "description": "کد تخفیف برای فراخوانی سرویس کال",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "scApiKey": {
+                    "type": "string",
+                    "title": "توکن برای فراخوانی سرویس کال"
+                }
+            },
+            "required": ["dealerBizId"],
+            "additionalProperties": false
+        }
+    },
+
+    "addDealerProductPermission": {
+        "header": {
+            "type": "object",
+            "properties": {
+                "_token_": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "_token_issuer_": {
+                    "type": "integer",
+                    "enum": [0, 1]
+                }
+            },
+            "required": [
+                "_token_",
+                "_token_issuer_"
+            ],
+            "additionalProperties": true
+        },
+        "form_params": {
+            "type": "object",
+            "properties": {
+                "dealerBizId": {
+                    "type": "integer",
+                    "title": "شناسه کسب و کار واسط"
+                },
+                "productId": {
+                    "type": "integer",
+                    "title": "شناسه محصول"
+                },
+                "scVoucherHash": {
+                    "type": "array",
+                    "title": "کد تخفیف برای فراخوانی سرویس کال",
+                    "description": "کد تخفیف برای فراخوانی سرویس کال",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "scApiKey": {
+                    "type": "string",
+                    "title": "توکن برای فراخوانی سرویس کال"
+                }
+            },
+            "required": ["dealerBizId", "productId"],
+            "additionalProperties": false
+        }
+    },
+
+    "dealerProductPermissionList": {
+        "header": {
+            "type": "object",
+            "properties": {
+                "_token_": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "_token_issuer_": {
+                    "type": "integer",
+                    "enum": [0, 1]
+                }
+            },
+            "required": [
+                "_token_",
+                "_token_issuer_"
+            ],
+            "additionalProperties": true
+        },
+        "form_params": {
+            "type": "object",
+            "properties": {
+                "productId": {
+                    "type": "integer",
+                    "title": "شناسه محصول"
+                },
+                "dealerBizId": {
+                    "type": "integer",
+                    "title": "شناسه کسب و کار واسط"
+                },
+                "enable": {
+                    "type": "string",
+                    "title": "فعال بودن واسط",
+                    "description": "true/false"
+                },
+                "offset": {
+                    "type": "integer",
+                    "minimum" : 0
+                },
+                "size": {
+                    "type": "integer",
+                    "minimum" : 1,
+                    "title": "تعداد رکورد در هر صفحه"
+                },
+                "scVoucherHash": {
+                    "type": "array",
+                    "title": "کد تخفیف برای فراخوانی سرویس کال",
+                    "description": "کد تخفیف برای فراخوانی سرویس کال",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "scApiKey": {
+                    "type": "string",
+                    "title": "توکن برای فراخوانی سرویس کال"
+                }
+            },
+            "required": [],
+            "additionalProperties": false
+        }
+    },
+
+    "dealingProductPermissionList": {
+        "header": {
+            "type": "object",
+            "properties": {
+                "_token_": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "_token_issuer_": {
+                    "type": "integer",
+                    "enum": [0, 1]
+                }
+            },
+            "required": [
+                "_token_",
+                "_token_issuer_"
+            ],
+            "additionalProperties": true
+        },
+        "form_params": {
+            "type": "object",
+            "properties": {
+                "productId": {
+                    "type": "integer",
+                    "title": "شناسه محصول"
+                },
+                "dealingBusinessId": {
+                    "type": "integer",
+                    "title": "شناسه کسب و کار واسط"
+                },
+                "enable": {
+                    "type": "string",
+                    "title": "فعال بودن واسط",
+                    "description": "true/false"
+                },
+                "offset": {
+                    "type": "integer",
+                    "minimum" : 0
+                },
+                "size": {
+                    "type": "integer",
+                    "minimum" : 1,
+                    "title": "تعداد رکورد در هر صفحه"
+                },
+                "scVoucherHash": {
+                    "type": "array",
+                    "title": "کد تخفیف برای فراخوانی سرویس کال",
+                    "description": "کد تخفیف برای فراخوانی سرویس کال",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "scApiKey": {
+                    "type": "string",
+                    "title": "توکن برای فراخوانی سرویس کال"
+                }
+            },
+            "required": [],
+            "additionalProperties": false
+        }
+    },
+
+    "disableDealerProductPermission": {
+        "header": {
+            "type": "object",
+            "properties": {
+                "_token_": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "_token_issuer_": {
+                    "type": "integer",
+                    "enum": [0, 1]
+                }
+            },
+            "required": [
+                "_token_",
+                "_token_issuer_"
+            ],
+            "additionalProperties": true
+        },
+        "form_params": {
+            "type": "object",
+            "properties": {
+                "productId": {
+                    "type": "integer",
+                    "title": "شناسه محصول"
+                },
+                "dealerBizId": {
+                    "type": "integer",
+                    "title": "شناسه کسب و کار واسط"
+                },
+                "scVoucherHash": {
+                    "type": "array",
+                    "title": "کد تخفیف برای فراخوانی سرویس کال",
+                    "description": "کد تخفیف برای فراخوانی سرویس کال",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "scApiKey": {
+                    "type": "string",
+                    "title": "توکن برای فراخوانی سرویس کال"
+                }
+            },
+            "required": ["dealerBizId", "productId"],
+            "additionalProperties": false
+        }
+    },
+
+    "enableDealerProductPermission": {
+        "header": {
+            "type": "object",
+            "properties": {
+                "_token_": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "_token_issuer_": {
+                    "type": "integer",
+                    "enum": [0, 1]
+                }
+            },
+            "required": [
+                "_token_",
+                "_token_issuer_"
+            ],
+            "additionalProperties": true
+        },
+        "form_params": {
+            "type": "object",
+            "properties": {
+                "productId": {
+                    "type": "integer",
+                    "title": "شناسه محصول"
+                },
+                "dealerBizId": {
+                    "type": "integer",
+                    "title": "شناسه کسب و کار واسط"
+                },
+                "scVoucherHash": {
+                    "type": "array",
+                    "title": "کد تخفیف برای فراخوانی سرویس کال",
+                    "description": "کد تخفیف برای فراخوانی سرویس کال",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "scApiKey": {
+                    "type": "string",
+                    "title": "توکن برای فراخوانی سرویس کال"
+                }
+            },
+            "required": ["dealerBizId", "productId"],
+            "additionalProperties": false
+        }
+    },
+
+    "businessDealingList": {
+        "header": {
+            "type": "object",
+            "properties": {
+                "_token_": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "_token_issuer_": {
+                    "type": "integer",
+                    "enum": [0, 1]
+                }
+            },
+            "required": [
+                "_token_",
+                "_token_issuer_"
+            ],
+            "additionalProperties": true
+        },
+        "form_params": {
+            "type": "object",
+            "properties": {
+                "dealingBusinessId": {
+                    "type": "integer",
+                    "title": "شناسه کسب و کاری که واسط آن هستید"
+                },
+                "enable": {
+                    "type": "string",
+                    "title": "فعال بودن واسط"
+                },
+                "offset": {
+                    "type": "integer",
+                    "minimum" : 0
+                },
+                "size": {
+                    "type": "integer",
+                    "minimum" : 1,
+                    "title": "تعداد رکورد در هر صفحه"
+                },
+                "scVoucherHash": {
+                    "type": "array",
+                    "title": "کد تخفیف برای فراخوانی سرویس کال",
+                    "description": "کد تخفیف برای فراخوانی سرویس کال",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "scApiKey": {
+                    "type": "string",
+                    "title": "توکن برای فراخوانی سرویس کال"
+                }
+            },
+            "required": [],
+            "additionalProperties": false
+        }
+    },
+
     "addUserAndBusiness": {
         "header": {
             "type": "object",
@@ -181,6 +699,18 @@
                     "type": "string",
                     "title": "کد ملی نماینده",
                     "description": "کد ملی 10 رقمی و بدون خط تیره و فاصله"
+                },
+                "scVoucherHash": {
+                    "type": "array",
+                    "title": "کد تخفیف برای فراخوانی سرویس کال",
+                    "description": "کد تخفیف برای فراخوانی سرویس کال",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "scApiKey": {
+                    "type": "string",
+                    "title": "توکن برای فراخوانی سرویس کال"
                 }
             },
             "required": ["username", "businessName", "email", "guildCode", "country", "state", "city", "address", "description", "agentFirstName", "agentLastName", "agentCellphoneNumber"],
@@ -300,6 +830,18 @@
                     "title": "شماره موبایل نماینده کسب و کار",
                     "pattern" : "^(0|\\+98|0098){1}[9]{1}[\\d]{9}$",
 		    "pattern_description": "به صورت 09123456789 وارد شود"
+                },
+                "scVoucherHash": {
+                    "type": "array",
+                    "title": "کد تخفیف برای فراخوانی سرویس کال",
+                    "description": "کد تخفیف برای فراخوانی سرویس کال",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "scApiKey": {
+                    "type": "string",
+                    "title": "توکن برای فراخوانی سرویس کال"
                 }
             },
             "required": [],
@@ -511,6 +1053,18 @@
                 "changeAgent": {
                     "type": "string",
                     "description": "در صورتی که بخواهید اطلاعات نماینده را تغییر دهید true وارد نمایید"
+                },
+                "scVoucherHash": {
+                    "type": "array",
+                    "title": "کد تخفیف برای فراخوانی سرویس کال",
+                    "description": "کد تخفیف برای فراخوانی سرویس کال",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "scApiKey": {
+                    "type": "string",
+                    "title": "توکن برای فراخوانی سرویس کال"
                 }
             },
             "required": ["bizId", "businessName", "guildCode", "country", "state", "city", "address", "description"],
@@ -562,6 +1116,18 @@
                 },
                 "economicCode": {
                     "type": "string"
+                },
+                "scVoucherHash": {
+                    "type": "array",
+                    "title": "کد تخفیف برای فراخوانی سرویس کال",
+                    "description": "کد تخفیف برای فراخوانی سرویس کال",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "scApiKey": {
+                    "type": "string",
+                    "title": "توکن برای فراخوانی سرویس کال"
                 }
             },
             "required": ["offset", "size"],
@@ -593,6 +1159,18 @@
                 "businessId": {
                     "type": "integer",
                     "title": "شناسه کسب و کار"
+                },
+                "scVoucherHash": {
+                    "type": "array",
+                    "title": "کد تخفیف برای فراخوانی سرویس کال",
+                    "description": "کد تخفیف برای فراخوانی سرویس کال",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "scApiKey": {
+                    "type": "string",
+                    "title": "توکن برای فراخوانی سرویس کال"
                 }
             },
             "required": ["businessId"],
@@ -629,6 +1207,18 @@
                     "minimum": 0,
                     "maximum": 10,
                     "title": "امتیاز کاربر به کسب و کار"
+                },
+                "scVoucherHash": {
+                    "type": "array",
+                    "title": "کد تخفیف برای فراخوانی سرویس کال",
+                    "description": "کد تخفیف برای فراخوانی سرویس کال",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "scApiKey": {
+                    "type": "string",
+                    "title": "توکن برای فراخوانی سرویس کال"
                 }
             },
             "required": ["businessId", "rate"],
@@ -665,6 +1255,18 @@
                     "type": "string",
                     "minLength" : 1,
                     "title": "نظر کاربر در مورد کسب و کار"
+                },
+                "scVoucherHash": {
+                    "type": "array",
+                    "title": "کد تخفیف برای فراخوانی سرویس کال",
+                    "description": "کد تخفیف برای فراخوانی سرویس کال",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "scApiKey": {
+                    "type": "string",
+                    "title": "توکن برای فراخوانی سرویس کال"
                 }
             },
             "required": ["businessId", "text"],
@@ -700,6 +1302,18 @@
                 "disfavorite": {
                     "type": "string",
                     "description": "اگر خالی یا false باشد، به علاقه مندی ها اضافه می شود و اگر true باشد، از علاقه مندی ها حذف میشود"
+                },
+                "scVoucherHash": {
+                    "type": "array",
+                    "title": "کد تخفیف برای فراخوانی سرویس کال",
+                    "description": "کد تخفیف برای فراخوانی سرویس کال",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "scApiKey": {
+                    "type": "string",
+                    "title": "توکن برای فراخوانی سرویس کال"
                 }
             },
             "required": ["businessId"],
@@ -734,6 +1348,18 @@
                         "type": "integer"
                     },
                     "title": "لیست شناسه های کسب و کار"
+                },
+                "scVoucherHash": {
+                    "type": "array",
+                    "title": "کد تخفیف برای فراخوانی سرویس کال",
+                    "description": "کد تخفیف برای فراخوانی سرویس کال",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "scApiKey": {
+                    "type": "string",
+                    "title": "توکن برای فراخوانی سرویس کال"
                 }
             },
             "required": ["id"],
@@ -781,6 +1407,18 @@
                 "size": {
                     "type": "integer",
                     "description":  "تعداد رکورد در هر صفحه"
+                },
+                "scVoucherHash": {
+                    "type": "array",
+                    "title": "کد تخفیف برای فراخوانی سرویس کال",
+                    "description": "کد تخفیف برای فراخوانی سرویس کال",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "scApiKey": {
+                    "type": "string",
+                    "title": "توکن برای فراخوانی سرویس کال"
                 }
             },
             "required": ["businessId"],
@@ -812,6 +1450,61 @@
                 "commentId": {
                     "type": "integer",
                     "title": "شناسه نظر"
+                },
+                "scVoucherHash": {
+                    "type": "array",
+                    "title": "کد تخفیف برای فراخوانی سرویس کال",
+                    "description": "کد تخفیف برای فراخوانی سرویس کال",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "scApiKey": {
+                    "type": "string",
+                    "title": "توکن برای فراخوانی سرویس کال"
+                }
+            },
+            "required": ["commentId"],
+            "additionalProperties": false
+        }
+    },
+
+   "unConfirmComment": {
+        "header": {
+            "type": "object",
+            "properties": {
+                "_token_": {
+                    "type": "string",
+                    "minLength" : 1
+                },
+                "_token_issuer_": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "_token_",
+                "_token_issuer_"
+            ],
+            "additionalProperties": true
+        },
+        "query": {
+            "type": "object",
+            "properties": {
+                "commentId": {
+                    "type": "integer",
+                    "title": "شناسه نظر"
+                },
+                "scVoucherHash": {
+                    "type": "array",
+                    "title": "کد تخفیف برای فراخوانی سرویس کال",
+                    "description": "کد تخفیف برای فراخوانی سرویس کال",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "scApiKey": {
+                    "type": "string",
+                    "title": "توکن برای فراخوانی سرویس کال"
                 }
             },
             "required": ["commentId"],
