@@ -18,6 +18,7 @@ class DealingService extends BaseService
     private $header;
     private static $dealingApi;
     private static $serviceProductId;
+    private static $baseUri;
 
     public function __construct($baseInfo)
     {
@@ -25,6 +26,8 @@ class DealingService extends BaseService
         self::$jsonSchema = json_decode(file_get_contents(__DIR__ . '/../config/validationSchema.json'), true);
         self::$dealingApi = require __DIR__ . '/../config/apiConfig.php';
         self::$serviceProductId = require __DIR__ . '/../config/serviceProductId.php';
+        self::$serviceProductId = self::$serviceProductId[self::$serverType];
+        self::$baseUri = self::$config[self::$serverType];
         $this->header = [
             '_token_issuer_'    =>  $baseInfo->getTokenIssuer(),
             '_token_'           => $baseInfo->getToken()
@@ -71,7 +74,7 @@ class DealingService extends BaseService
         }
 
         return ApiRequestHandler::Request(
-            self::$config[self::$serverType][self::$dealingApi[$apiName]['baseUri']],
+            self::$baseUri[self::$dealingApi[$apiName]['baseUri']],
             $method,
             self::$dealingApi[$apiName]['subUri'],
             $option,
@@ -119,7 +122,7 @@ class DealingService extends BaseService
         }
 
         return ApiRequestHandler::Request(
-            self::$config[self::$serverType][self::$dealingApi[$apiName]['baseUri']],
+            self::$baseUri[self::$dealingApi[$apiName]['baseUri']],
             $method,
             self::$dealingApi[$apiName]['subUri'],
             $option,
@@ -166,7 +169,7 @@ class DealingService extends BaseService
         }
 
         return ApiRequestHandler::Request(
-            self::$config[self::$serverType][self::$dealingApi[$apiName]['baseUri']],
+            self::$baseUri[self::$dealingApi[$apiName]['baseUri']],
             $method,
             self::$dealingApi[$apiName]['subUri'],
             $option,
@@ -215,7 +218,7 @@ class DealingService extends BaseService
         }
 
         return ApiRequestHandler::Request(
-            self::$config[self::$serverType][self::$dealingApi[$apiName]['baseUri']],
+            self::$baseUri[self::$dealingApi[$apiName]['baseUri']],
             $method,
             self::$dealingApi[$apiName]['subUri'],
             $option,
@@ -264,7 +267,7 @@ class DealingService extends BaseService
         }
 
         return ApiRequestHandler::Request(
-            self::$config[self::$serverType][self::$dealingApi[$apiName]['baseUri']],
+            self::$baseUri[self::$dealingApi[$apiName]['baseUri']],
             $method,
             self::$dealingApi[$apiName]['subUri'],
             $option,
@@ -323,7 +326,7 @@ class DealingService extends BaseService
         unset($option[$paramKey]);
 
         return  ApiRequestHandler::Request(
-            self::$config[self::$serverType][self::$dealingApi[$apiName]['baseUri']],
+            self::$baseUri[self::$dealingApi[$apiName]['baseUri']],
             self::$dealingApi[$apiName]['method'],
             $relativeUri,
             $option,
@@ -373,7 +376,7 @@ class DealingService extends BaseService
         unset($option[$paramKey]);
 
         return  ApiRequestHandler::Request(
-            self::$config[self::$serverType][self::$dealingApi[$apiName]['baseUri']],
+            self::$baseUri[self::$dealingApi[$apiName]['baseUri']],
             self::$dealingApi[$apiName]['method'],
             $relativeUri,
             $option,
@@ -431,7 +434,7 @@ class DealingService extends BaseService
         unset($option['query']);
 
         return  ApiRequestHandler::Request(
-            self::$config[self::$serverType][self::$dealingApi[$apiName]['baseUri']],
+            self::$baseUri[self::$dealingApi[$apiName]['baseUri']],
             self::$dealingApi[$apiName]['method'],
             $relativeUri,
             $option,
@@ -479,7 +482,7 @@ class DealingService extends BaseService
         }
 
         return ApiRequestHandler::Request(
-            self::$config[self::$serverType][self::$dealingApi[$apiName]['baseUri']],
+            self::$baseUri[self::$dealingApi[$apiName]['baseUri']],
             $method,
             self::$dealingApi[$apiName]['subUri'],
             $option,
@@ -528,7 +531,7 @@ class DealingService extends BaseService
         }
 
         return ApiRequestHandler::Request(
-            self::$config[self::$serverType][self::$dealingApi[$apiName]['baseUri']],
+            self::$baseUri[self::$dealingApi[$apiName]['baseUri']],
             $method,
             self::$dealingApi[$apiName]['subUri'],
             $option,
@@ -576,7 +579,7 @@ class DealingService extends BaseService
         }
 
         return ApiRequestHandler::Request(
-            self::$config[self::$serverType][self::$dealingApi[$apiName]['baseUri']],
+            self::$baseUri[self::$dealingApi[$apiName]['baseUri']],
             $method,
             self::$dealingApi[$apiName]['subUri'],
             $option,
@@ -624,7 +627,7 @@ class DealingService extends BaseService
         }
 
         return ApiRequestHandler::Request(
-            self::$config[self::$serverType][self::$dealingApi[$apiName]['baseUri']],
+            self::$baseUri[self::$dealingApi[$apiName]['baseUri']],
             $method,
             self::$dealingApi[$apiName]['subUri'],
             $option,
@@ -675,7 +678,7 @@ class DealingService extends BaseService
         unset($option['query']);
 
         return  ApiRequestHandler::Request(
-            self::$config[self::$serverType][self::$dealingApi[$apiName]['baseUri']],
+            self::$baseUri[self::$dealingApi[$apiName]['baseUri']],
             self::$dealingApi[$apiName]['method'],
             $relativeUri,
             $option,
@@ -724,7 +727,7 @@ class DealingService extends BaseService
         }
 
         return ApiRequestHandler::Request(
-            self::$config[self::$serverType][self::$dealingApi[$apiName]['baseUri']],
+            self::$baseUri[self::$dealingApi[$apiName]['baseUri']],
             $method,
             self::$dealingApi[$apiName]['subUri'],
             $option,
@@ -773,7 +776,7 @@ class DealingService extends BaseService
         }
 
         return ApiRequestHandler::Request(
-            self::$config[self::$serverType][self::$dealingApi[$apiName]['baseUri']],
+            self::$baseUri[self::$dealingApi[$apiName]['baseUri']],
             $method,
             self::$dealingApi[$apiName]['subUri'],
             $option,
@@ -822,7 +825,7 @@ class DealingService extends BaseService
         }
 
         return ApiRequestHandler::Request(
-            self::$config[self::$serverType][self::$dealingApi[$apiName]['baseUri']],
+            self::$baseUri[self::$dealingApi[$apiName]['baseUri']],
             $method,
             self::$dealingApi[$apiName]['subUri'],
             $option,
@@ -871,7 +874,7 @@ class DealingService extends BaseService
         }
 
         return ApiRequestHandler::Request(
-            self::$config[self::$serverType][self::$dealingApi[$apiName]['baseUri']],
+            self::$baseUri[self::$dealingApi[$apiName]['baseUri']],
             $method,
             self::$dealingApi[$apiName]['subUri'],
             $option,
@@ -920,7 +923,7 @@ class DealingService extends BaseService
         }
 
         return ApiRequestHandler::Request(
-            self::$config[self::$serverType][self::$dealingApi[$apiName]['baseUri']],
+            self::$baseUri[self::$dealingApi[$apiName]['baseUri']],
             $method,
             self::$dealingApi[$apiName]['subUri'],
             $option,
@@ -970,7 +973,7 @@ class DealingService extends BaseService
         }
 
         return ApiRequestHandler::Request(
-            self::$config[self::$serverType][self::$dealingApi[$apiName]['baseUri']],
+            self::$baseUri[self::$dealingApi[$apiName]['baseUri']],
             $method,
             self::$dealingApi[$apiName]['subUri'],
             $option,
@@ -1019,7 +1022,7 @@ class DealingService extends BaseService
         }
 
         return ApiRequestHandler::Request(
-            self::$config[self::$serverType][self::$dealingApi[$apiName]['baseUri']],
+            self::$baseUri[self::$dealingApi[$apiName]['baseUri']],
             $method,
             self::$dealingApi[$apiName]['subUri'],
             $option,
@@ -1068,7 +1071,7 @@ class DealingService extends BaseService
         }
 
         return ApiRequestHandler::Request(
-            self::$config[self::$serverType][self::$dealingApi[$apiName]['baseUri']],
+            self::$baseUri[self::$dealingApi[$apiName]['baseUri']],
             $method,
             self::$dealingApi[$apiName]['subUri'],
             $option,

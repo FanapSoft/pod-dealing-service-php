@@ -79,12 +79,6 @@ return
             'method' => 'GET'
         ],
 
-        'subBusinessList' => [
-            'baseUri' => 'PLATFORM-ADDRESS',
-            'subUri' => 'nzh/doServiceCall',
-            'method' => 'GET'
-        ],
-
         'getApiTokenForCreatedBusiness' => [
             'baseUri' => 'PLATFORM-ADDRESS',
             'subUri' => 'nzh/doServiceCall',
