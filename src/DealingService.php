@@ -16,6 +16,7 @@ use Pod\Base\Service\ApiRequestHandler;
 class DealingService extends BaseService
 {
     private $header;
+    private static $jsonSchema;
     private static $dealingApi;
     private static $serviceProductId;
     private static $baseUri;
@@ -61,7 +62,7 @@ class DealingService extends BaseService
             $paramKey => $params,
         ];
 
-        self::validateOption($apiName, $option, $paramKey);
+        self::validateOption($option, self::$jsonSchema[$apiName], $paramKey);
         # prepare params to send
         # set service call product Id
         $option[$paramKey]['scProductId'] = self::$serviceProductId[$apiName];
@@ -109,7 +110,7 @@ class DealingService extends BaseService
             $paramKey => $params,
         ];
 
-        self::validateOption($apiName, $option, $paramKey);
+        self::validateOption($option, self::$jsonSchema[$apiName], $paramKey);
         # prepare params to send
         # set service call product Id
         $option[$paramKey]['scProductId'] = self::$serviceProductId[$apiName];
@@ -156,7 +157,7 @@ class DealingService extends BaseService
             $paramKey => $params,
         ];
 
-        self::validateOption($apiName, $option, $paramKey);
+        self::validateOption($option, self::$jsonSchema[$apiName], $paramKey);
         # prepare params to send
         # set service call product Id
         $option[$paramKey]['scProductId'] = self::$serviceProductId[$apiName];
@@ -205,7 +206,7 @@ class DealingService extends BaseService
             $paramKey => $params,
         ];
 
-        self::validateOption($apiName, $option, $paramKey);
+        self::validateOption($option, self::$jsonSchema[$apiName], $paramKey);
         # prepare params to send
         # set service call product Id
         $option[$paramKey]['scProductId'] = self::$serviceProductId[$apiName];
@@ -254,7 +255,7 @@ class DealingService extends BaseService
             $paramKey => $params,
         ];
 
-        self::validateOption($apiName, $option, $paramKey);
+        self::validateOption($option, self::$jsonSchema[$apiName], $paramKey);
         # prepare params to send
         # set service call product Id
         $option[$paramKey]['scProductId'] = self::$serviceProductId[$apiName];
@@ -301,7 +302,7 @@ class DealingService extends BaseService
             $paramKey => $params,
         ];
 
-        self::validateOption($apiName, $option, $paramKey);
+        self::validateOption($option, self::$jsonSchema[$apiName], $paramKey);
 
         // prepare params to send
         # set service call product Id
@@ -360,7 +361,7 @@ class DealingService extends BaseService
             $paramKey => $params,
         ];
 
-        self::validateOption($apiName, $option, $paramKey);
+        self::validateOption($option, self::$jsonSchema[$apiName], $paramKey);
 
         // prepare params to send
         # set service call product Id
@@ -409,7 +410,7 @@ class DealingService extends BaseService
             $paramKey => $params,
         ];
 
-        self::validateOption($apiName, $option, $paramKey);
+        self::validateOption($option, self::$jsonSchema[$apiName], $paramKey);
 
         // prepare params to send
         # set service call product Id
@@ -469,7 +470,7 @@ class DealingService extends BaseService
             $paramKey => $params,
         ];
 
-        self::validateOption($apiName, $option, $paramKey);
+        self::validateOption($option, self::$jsonSchema[$apiName], $paramKey);
         # prepare params to send
         # set service call product Id
         $option[$paramKey]['scProductId'] = self::$serviceProductId[$apiName];
@@ -518,7 +519,7 @@ class DealingService extends BaseService
             $paramKey => $params,
         ];
 
-        self::validateOption($apiName, $option, $paramKey);
+        self::validateOption($option, self::$jsonSchema[$apiName], $paramKey);
         # prepare params to send
         # set service call product Id
         $option[$paramKey]['scProductId'] = self::$serviceProductId[$apiName];
@@ -566,7 +567,7 @@ class DealingService extends BaseService
             $paramKey => $params,
         ];
 
-        self::validateOption($apiName, $option, $paramKey);
+        self::validateOption($option, self::$jsonSchema[$apiName], $paramKey);
         # prepare params to send
         # set service call product Id
         $option[$paramKey]['scProductId'] = self::$serviceProductId[$apiName];
@@ -614,7 +615,7 @@ class DealingService extends BaseService
             $paramKey => $params,
         ];
 
-        self::validateOption($apiName, $option, $paramKey);
+        self::validateOption($option, self::$jsonSchema[$apiName], $paramKey);
         # prepare params to send
         # set service call product Id
         $option[$paramKey]['scProductId'] = self::$serviceProductId[$apiName];
@@ -662,7 +663,7 @@ class DealingService extends BaseService
             $paramKey => $params,
         ];
 
-        self::validateOption($apiName, $option, $paramKey);
+        self::validateOption($option, self::$jsonSchema[$apiName], $paramKey);
 
         // prepare params to send
         $withBracketParams = [];
@@ -714,7 +715,7 @@ class DealingService extends BaseService
             $paramKey => $params,
         ];
 
-        self::validateOption($apiName, $option, $paramKey);
+        self::validateOption($option, self::$jsonSchema[$apiName], $paramKey);
         # prepare params to send
         # set service call product Id
         $option[$paramKey]['scProductId'] = self::$serviceProductId[$apiName];
@@ -763,7 +764,7 @@ class DealingService extends BaseService
             $paramKey => $params,
         ];
 
-        self::validateOption($apiName, $option, $paramKey);
+        self::validateOption($option, self::$jsonSchema[$apiName], $paramKey);
         # prepare params to send
         # set service call product Id
         $option[$paramKey]['scProductId'] = self::$serviceProductId[$apiName];
@@ -785,8 +786,8 @@ class DealingService extends BaseService
         );
     }
 
-    public function unConfirmComment($params) {
-        $apiName = 'unConfirmComment';
+    public function unconfirmComment($params) {
+        $apiName = 'unconfirmComment';
         $header = $this->header;
         # for array params that need to send by get method
         $optionHasArray = false;
@@ -812,7 +813,7 @@ class DealingService extends BaseService
             $paramKey => $params,
         ];
 
-        self::validateOption($apiName, $option, $paramKey);
+        self::validateOption($option, self::$jsonSchema[$apiName], $paramKey);
         # prepare params to send
         # set service call product Id
         $option[$paramKey]['scProductId'] = self::$serviceProductId[$apiName];
@@ -861,10 +862,15 @@ class DealingService extends BaseService
             $paramKey => $params,
         ];
 
-        self::validateOption($apiName, $option, $paramKey);
+        self::validateOption($option, self::$jsonSchema[$apiName], $paramKey);
         # prepare params to send
         # set service call product Id
         $option[$paramKey]['scProductId'] = self::$serviceProductId[$apiName];
+
+        if(isset($params['productEntityId'])) {
+            $option[$paramKey]['productId'] = $option[$paramKey]['productEntityId'];
+            unset($option[$paramKey]['productEntityId']);
+        }
 
         if (isset($params['scVoucherHash'])) {
             $option['withoutBracketParams'] =  $option[$paramKey];
@@ -910,10 +916,15 @@ class DealingService extends BaseService
             $paramKey => $params,
         ];
 
-        self::validateOption($apiName, $option, $paramKey);
+        self::validateOption($option, self::$jsonSchema[$apiName], $paramKey);
         # prepare params to send
         # set service call product Id
         $option[$paramKey]['scProductId'] = self::$serviceProductId[$apiName];
+
+        if(isset($params['productEntityId'])) {
+            $option[$paramKey]['productId'] = $option[$paramKey]['productEntityId'];
+            unset($option[$paramKey]['productEntityId']);
+        }
 
         if (isset($params['scVoucherHash'])) {
             $option['withoutBracketParams'] =  $option[$paramKey];
@@ -960,10 +971,15 @@ class DealingService extends BaseService
             $paramKey => $params,
         ];
 
-        self::validateOption($apiName, $option, $paramKey);
+        self::validateOption($option, self::$jsonSchema[$apiName], $paramKey);
         # prepare params to send
         # set service call product Id
         $option[$paramKey]['scProductId'] = self::$serviceProductId[$apiName];
+
+        if(isset($params['productEntityId'])) {
+            $option[$paramKey]['productId'] = $option[$paramKey]['productEntityId'];
+            unset($option[$paramKey]['productEntityId']);
+        }
 
         if (isset($params['scVoucherHash'])) {
             $option['withoutBracketParams'] =  $option[$paramKey];
@@ -1009,10 +1025,15 @@ class DealingService extends BaseService
             $paramKey => $params,
         ];
 
-        self::validateOption($apiName, $option, $paramKey);
+        self::validateOption($option, self::$jsonSchema[$apiName], $paramKey);
         # prepare params to send
         # set service call product Id
         $option[$paramKey]['scProductId'] = self::$serviceProductId[$apiName];
+
+        if(isset($params['productEntityId'])) {
+            $option[$paramKey]['productId'] = $option[$paramKey]['productEntityId'];
+            unset($option[$paramKey]['productEntityId']);
+        }
 
         if (isset($params['scVoucherHash'])) {
             $option['withoutBracketParams'] =  $option[$paramKey];
@@ -1058,10 +1079,15 @@ class DealingService extends BaseService
             $paramKey => $params,
         ];
 
-        self::validateOption($apiName, $option, $paramKey);
+        self::validateOption($option, self::$jsonSchema[$apiName], $paramKey);
         # prepare params to send
         # set service call product Id
         $option[$paramKey]['scProductId'] = self::$serviceProductId[$apiName];
+
+        if(isset($params['productEntityId'])) {
+            $option[$paramKey]['productId'] = $option[$paramKey]['productEntityId'];
+            unset($option[$paramKey]['productEntityId']);
+        }
 
         if (isset($params['scVoucherHash'])) {
             $option['withoutBracketParams'] =  $option[$paramKey];

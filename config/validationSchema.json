@@ -218,7 +218,7 @@
                     "type": "integer",
                     "title": "شناسه کسب و کار واسط"
                 },
-                "productId": {
+                "productEntityId": {
                     "type": "integer",
                     "title": "شناسه محصول"
                 },
@@ -235,7 +235,7 @@
                     "title": "توکن برای فراخوانی سرویس کال"
                 }
             },
-            "required": ["dealerBizId", "productId"],
+            "required": ["dealerBizId", "productEntityId"],
             "additionalProperties": false
         }
     },
@@ -262,7 +262,7 @@
         "form_params": {
             "type": "object",
             "properties": {
-                "productId": {
+                "productEntityId": {
                     "type": "integer",
                     "title": "شناسه محصول"
                 },
@@ -324,7 +324,7 @@
         "form_params": {
             "type": "object",
             "properties": {
-                "productId": {
+                "productEntityId": {
                     "type": "integer",
                     "title": "شناسه محصول"
                 },
@@ -386,7 +386,7 @@
         "form_params": {
             "type": "object",
             "properties": {
-                "productId": {
+                "productEntityId": {
                     "type": "integer",
                     "title": "شناسه محصول"
                 },
@@ -407,7 +407,7 @@
                     "title": "توکن برای فراخوانی سرویس کال"
                 }
             },
-            "required": ["dealerBizId", "productId"],
+            "required": ["dealerBizId", "productEntityId"],
             "additionalProperties": false
         }
     },
@@ -434,7 +434,7 @@
         "form_params": {
             "type": "object",
             "properties": {
-                "productId": {
+                "productEntityId": {
                     "type": "integer",
                     "title": "شناسه محصول"
                 },
@@ -455,7 +455,7 @@
                     "title": "توکن برای فراخوانی سرویس کال"
                 }
             },
-            "required": ["dealerBizId", "productId"],
+            "required": ["dealerBizId", "productEntityId"],
             "additionalProperties": false
         }
     },
@@ -540,8 +540,8 @@
             "properties": {
                 "username": {
                     "type": "string",
-                    "minLength" : 1,
-		            "title": "نام کاربری کسب و کار جدید",
+                    "minLength" : 3,
+                    "title": "نام کاربری کسب و کار جدید",
                     "description": "منحصر به فرد، فاقد space و حتما با حروف انگلیسی ثبت گردد."
                 },
                 "businessName": {
@@ -559,11 +559,13 @@
                 },
                 "sheba": {
                     "type": "string",
-		            "title": "کد شبا حساب بانکی",
+                    "pattern" : "^(\\d)(?!\\1{23}$)\\d{23}$",
+                    "title": "کد شبا حساب بانکی",
 		            "description": "شبا که به صورت عددی وارد می شود. (بدون IR)"
                 },
                 "nationalCode": {
                     "type": "string",
+                    "pattern": "^\\d{10}$",
 		            "title": "شناسه ملی کسب و کار",
 		            "description": "کد 11 رقمی"
                 },
@@ -654,14 +656,36 @@
                     "description": "آدرس اینترنتی تصویر کاور کسب و کار که به صورت مستقیم در دسترس است"
                 },
                 "tags": {
-                    "type": "string",
-                    "title": "تگ های آیتم",
-                    "description": "با ، (ویرگول) موارد را از هم جدا کنید"
+                    "oneOf": [
+                        {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            },
+                            "title": "لیست درخت تگ"
+                        },
+                        {
+                            "type": "string",
+                            "title": "تگ های آیتم",
+                            "description": "با ، (ویرگول) موارد را از هم جدا کنید"
+                        }
+                    ]
                 },
                 "tagTrees": {
-                    "type": "string",
-                    "title": "تگ های درختی",
-                    "description": "با ، (ویرگول) موارد را از هم جدا کنید"
+                    "oneOf": [
+                        {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            },
+                            "title": "لیست درخت تگ"
+                        },
+                        {
+                            "type": "string",
+                            "title": "تگ های درختی",
+                            "description": "با ، (ویرگول) موارد را از هم جدا کنید"
+                        }
+                    ]
                 },
                 "tagTreeCategoryName": {
                     "type": "string",
@@ -698,6 +722,7 @@
                 "agentNationalCode": {
                     "type": "string",
                     "title": "کد ملی نماینده",
+                    "pattern": "^\\d{10}$",
                     "description": "کد ملی 10 رقمی و بدون خط تیره و فاصله"
                 },
                 "scVoucherHash": {
@@ -755,10 +780,12 @@
                 },
                 "offset": {
                     "type": "integer",
+                    "minimum" : 0,
                     "title": "اندیس شروع"
                 },
                 "size": {
                     "type": "integer",
+                    "minimum" : 1,
                     "title": "تعداد رکورد در هر صفحه"
                 },
                 "query": {
@@ -766,18 +793,34 @@
                     "title": "مورد جستجو روی بیزینس های موجود"
                 },
                 "tags": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    },
-                    "title": "لیست تگ"
+                    "oneOf": [
+                        {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            },
+                            "title": "لیست درخت تگ"
+                        },
+                        {
+                            "type": "string",
+                            "title": "تگ های آیتم",
+                            "description": "با ، (ویرگول) موارد را از هم جدا کنید"
+                        }
+                    ]
                 },
                 "tagTrees": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    },
-                    "title": "لیست درخت تگ"
+                    "oneOf": [
+                        {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            },
+                            "title": "لیست درخت تگ"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ]
                 },
                 "active": {
                     "type": "string",
@@ -809,11 +852,13 @@
                 },
                 "sheba": {
                     "type": "string",
+                    "pattern" : "^(\\d)(?!\\1{23}$)\\d{23}$",
                     "title": "کد شبا حساب بانکی",
                     "description": "شبا که به صورت عددی وارد می شود. (بدون IR)"
                 },
                 "nationalCode": {
                     "type": "string",
+                    "pattern": "^\\d{10}$",
                     "title": "شناسه ملی کسب و کار"
                 },
                 "economicCode": {
@@ -911,11 +956,13 @@
                 },
                 "sheba": {
                     "type": "string",
+                    "pattern" : "^(\\d)(?!\\1{23}$)\\d{23}$",
                     "title": "کد شبا حساب بانکی",
                     "description": "شبا که به صورت عددی وارد می شود. (بدون IR)"
                 },
                 "nationalCode": {
                     "type": "string",
+                    "pattern": "^\\d{10}$",
                     "title": "شناسه ملی کسب و کار"
                 },
                 "economicCode": {
@@ -924,10 +971,11 @@
                 },
                 "email": {
                     "type": "string",
+                    "format": "email",
                     "title": "ایمیل"
                 },
                 "registrationNumber": {
-                    "type": "integer",
+                    "type": "string",
                     "title": "شماره ثبت کسب و کار"
                 },
                 "guildCode": {
@@ -949,11 +997,12 @@
                 "phone": {
                     "type": "string",
                     "title": "شماره تلفن",
-                    "pattern" : "\\d{6,14}",
+                    "pattern" : "^\\d{6,14}$",
                     "pattern_description": "شماره تلفن با پیش شماره وارد شود"
                 },
                 "fax": {
                     "type": "string",
+                    "pattern" : "^\\d{6,14}$",
                     "title": "شماره فکس",
                     "description": "در صورت ورد همراه با پیش شماره وارد شود"
                 },
@@ -1007,14 +1056,36 @@
                     "description": "آدرس اینترنتی تصویر کاور کسب و کار که به صورت مستقیم در دسترس است"
                 },
                 "tags": {
-                    "type": "string",
-                    "title": "تگ های آیتم",
-                    "description": "با ، (ویرگول) موارد را از هم جدا کنید"
+                    "oneOf": [
+                        {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            },
+                            "title": "لیست درخت تگ"
+                        },
+                        {
+                            "type": "string",
+                            "title": "تگ های آیتم",
+                            "description": "با ، (ویرگول) موارد را از هم جدا کنید"
+                        }
+                    ]
                 },
                 "tagTrees": {
-                    "type": "string",
-                    "title": "تگ های درختی",
-                    "description": "با ، (ویرگول) موارد را از هم جدا کنید"
+                    "oneOf": [
+                        {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            },
+                            "title": "لیست درخت تگ"
+                        },
+                        {
+                            "type": "string",
+                            "title": "تگ های درختی",
+                            "description": "با ، (ویرگول) موارد را از هم جدا کنید"
+                        }
+                    ]
                 },
                 "tagTreeCategoryName": {
                     "type": "string",
@@ -1047,6 +1118,7 @@
                 },
                 "agentNationalCode": {
                     "type": "string",
+                    "pattern": "^\\d{10}$",
                     "title": "کد ملی نماینده",
                     "description": "کد ملی 10 رقمی و بدون خط تیره و فاصله"
                 },
@@ -1094,16 +1166,19 @@
             "type": "object",
             "properties": {
                 "offset": {
-                    "type": "integer"
+                    "type": "integer",
+                    "minimum" : 0
                 },
                 "size": {
-                    "type": "integer"
+                    "type": "integer",
+                    "minimum" : 1
                 },
                 "name": {
                     "type": "string"
                 },
                 "nationalCode": {
-                    "type": "string"
+                    "type": "string",
+                    "pattern": "^\\d{10}$"
                 },
                 "cellphoneNumber": {
                     "type": "string"
@@ -1205,7 +1280,7 @@
                 "rate": {
                     "type": "integer",
                     "minimum": 0,
-                    "maximum": 10,
+                    "maximum": 5,
                     "title": "امتیاز کاربر به کسب و کار"
                 },
                 "scVoucherHash": {
@@ -1316,7 +1391,7 @@
                     "title": "توکن برای فراخوانی سرویس کال"
                 }
             },
-            "required": ["businessId"],
+            "required": ["businessId", "disfavorite"],
             "additionalProperties": false
         }
     },
@@ -1402,10 +1477,12 @@
                 },
                 "offset": {
                     "type": "integer",
+                    "minimum" : 0,
                     "description":  "در صورتی که این فیلد وارد شود فیلدهای lastId و firstId نباید وارد شوند و نتیجه نزولی مرتب می شود"
                 },
                 "size": {
                     "type": "integer",
+                    "minimum" : 1,
                     "description":  "تعداد رکورد در هر صفحه"
                 },
                 "scVoucherHash": {
@@ -1421,7 +1498,11 @@
                     "title": "توکن برای فراخوانی سرویس کال"
                 }
             },
-            "required": ["businessId"],
+            "oneOf": [
+                {"required": ["businessId", "firstId"]},
+                {"required": ["businessId", "lastId"]},
+                {"required": ["businessId", "offset"]}
+                ],
             "additionalProperties": false
         }
     },
@@ -1469,7 +1550,7 @@
         }
     },
 
-   "unConfirmComment": {
+   "unconfirmComment": {
         "header": {
             "type": "object",
             "properties": {

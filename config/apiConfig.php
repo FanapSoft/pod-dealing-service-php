@@ -121,7 +121,7 @@ return
             'method' => 'GET'
         ],
 
-        'unConfirmComment' => [
+        'unconfirmComment' => [
             'baseUri' => 'PLATFORM-ADDRESS',
             'subUri' => 'nzh/doServiceCall',
             'method' => 'GET'
