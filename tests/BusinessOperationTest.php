@@ -16,12 +16,12 @@ final class BusinessOperationTest extends TestCase
 //    public static $apiToken;
     public static $dealingService;
     const TOKEN_ISSUER = 1;
-    const API_TOKEN = '4d3d6b85e2e844b0ade83cc2ec5b4c85';
-    const API_TOKEN_12582 = '954e58d14f544bd0b5daa7f9401ed3ea';
-    const ACCESS_TOKEN = '7e1044745ba543ce97231dafa200859f';
-    const CLIENT_ID = '6257411i38cb46e0ae26be4629583b22';
-    const CLIENT_SECRET = 'd33b5e71';
-    const CONFIRM_CODE = '2007431';
+    const API_TOKEN = '{Put APi Token}';
+    const API_TOKEN_12582 = '{Put Another APi Token}';
+    const ACCESS_TOKEN = '{Put Access Token}';
+    const CLIENT_ID = '{Put Client Id}';
+    const CLIENT_SECRET = '{Put Client Secret}';
+    const CONFIRM_CODE = '{Put confirm code}';
     const INFORMATION_TECHNOLOGY_GUILD = 'INFORMATION_TECHNOLOGY_GUILD';
     const TOILETRIES_GUILD = 'TOILETRIES_GUILD';
 
